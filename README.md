@@ -123,7 +123,7 @@ Homebridge needs a config.json file. In this setup it must be placed at `/var/li
 See the sample config.json at [nfarina's Homebridge site](https://github.com/nfarina/homebridge).
 
 ### Homebridge-ui-x plugin
-Oznu has made a UI for Homebridge where one can e.g. edit config.json and see the running status of Homebridge. You'll find more information about the install etc. at [npmjs.com](https://www.npmjs.com/package/homebridge-config-ui-x), but I have added some specifics for my setup below.
+Oznu has made a [UI for Homebridge](https://www.npmjs.com/package/homebridge-config-ui-x) where one can e.g. edit config.json and see the running status of Homebridge. You'll find more information about the install etc. at [npmjs.com](https://www.npmjs.com/package/homebridge-config-ui-x), but I have added some specifics for my setup below.
 * Edit the service file with  `sudo vim /etc/default/homebridge.service`
 * Add and `-I` argument to make Homebridge run in insecure mode. It should look like this:
    ```
