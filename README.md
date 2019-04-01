@@ -6,6 +6,12 @@ Homebridge is a great piece of software letting us add alot of stuff to Apple Ho
 
 An easy way to install everything is simply using the [Docker Homebridge by Oznu](). However, I'm not experienced with Docker and didn't manage making it work with Bluetooth. This description is how I setup my RPi Zero W with Homebridge.
 
+By using the configuration, we will achieve the following:
+* A headless RPi connected to your WiFi.
+* Homebridge service running, and starting on boot.
+* Noble functioning making it possible to use plugins that e.g. scans and reads BLE dongles such as thermometers.
+* Homebridge UI-X installed for an easy to use interface for Homebridge.
+
 ## References
 * [Homebridge by nafarina](https://github.com/nfarina/homebridge)
 * [Docker Homebridge by Oznu](https://github.com/oznu/docker-homebridge)
@@ -136,4 +142,36 @@ Oznu has made a [UI for Homebridge](https://www.npmjs.com/package/homebridge-con
    # DEBUG=*
    ```
 * Install the plugin with `sudo npm install -g --unsafe-perm homebridge-config-ui-x`.
+* Add the necessary platform `config.json`. The platform name is config - example of config.json:
+   ```
+   {
+    "bridge": {
+        "name": "Homebridge 1",
+        "username": "EE:EE:EE:EE:EE:EE",
+        "port": 51826,
+        "pin": "191-61-311"
+    },
+    "description": "Homebridge server.",
+    "platforms": [
+        {
+            "platform": "config",
+            "name": "Config",
+            "port": 8080,
+            "sudo": true,
+            "log": {
+                "method": "systemd",
+                "service": "homebridge"
+            }
+        }
+    ],
+    "accessories": []
+   }
+   ```
+* You'll find the Homebridg UI at `http://<IP address of the RPi>:8080`. Default credentials are admin / admin.
+* The `log`-part of the config.json does so that you can see the logs in the UI.
 
+### Tips and tricks
+* You can see status of Homebridge in the UI, but if you want to utilize the command line, you can use the following commands:
+  * See the status of the homebridge service with the command `systemctl status homebridge`.
+  * See the log with the command `journalctl -u homebridge`.
+  * Restart the service with `systemctl restart homebridge`.
