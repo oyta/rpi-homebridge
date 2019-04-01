@@ -116,7 +116,7 @@ To making the homebridge user run without password open the sudoers file with:
 ```sudo visudo```
 
 Then add a line with the following:
-```homebridge ALL=(ALL) NOPASSWD: ALL"```
+```homebridge ALL=(ALL) NOPASSWD: ALL```
 
 ### config.json
 Homebridge needs a config.json file. In this setup it must be placed at `/var/lib/homebridge/config.json`.
