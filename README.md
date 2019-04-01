@@ -2,7 +2,7 @@
 Setup of RPi Zero W with Homebridge to function with, among others, Noble.
 
 ## Intro
-Homebridge is a great piece of software letting us add alot of stuff to Apple Homekit. It can be installed on different kind of hardware, also the cheap and small Raspberry Pi Zero W. The RPi Zero W has built in WiFi and Bluetooth.
+Homebridge is a great piece of software letting us add alot of stuff to Apple Homekit. It can be installed on different kinds of hardware, also the cheap and small Raspberry Pi Zero W. The RPi Zero W has built in WiFi and Bluetooth.
 
 An easy way to install everything is simply using the [Docker Homebridge by Oznu](). However, I'm not experienced with Docker and didn't manage making it work with Bluetooth. This description is how I setup my RPi Zero W with Homebridge.
 
