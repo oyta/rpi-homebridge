@@ -1,5 +1,6 @@
-# rpi-homebridge
+# RPi Zero W with Homebridge as a service
 Setup of RPi Zero W with Homebridge to function with, among others, Noble.
+
 ## Intro
 Homebridge is a great piece of software letting us add alot of stuff to Apple Homekit. It can be installed on different kind of hardware, also the cheap and small Raspberry Pi Zero W. The RPi Zero W has built in WiFi and Bluetooth.
 
@@ -75,8 +76,58 @@ v11.13.0
 pi@rpi-zw-01:~ $ npm -v
 6.7.0
 ```
+Give Node sudo rights for running BLE Scan:
+```
+sudo setcap cap_net_raw+eip $(eval readlink -f `which node`)
+```
 
-### 
+### Install Homebridge
+```
+sudo npm install -g --unsafe-perm homebridge
+```
 
+### Making homebridge run as a service on the Rpi
+Check out https://gist.github.com/johannrichard/0ad0de1feb6adb9eb61a/#file-homebridge by for the original description and files.
+```
+git clone https://gist.github.com/0ad0de1feb6adb9eb61a.git
+  
+sudo cp ./0ad0de1feb6adb9eb61a/homebridge /etc/default/homebridge
+sudo cp ./0ad0de1feb6adb9eb61a/homebridge.service /etc/systemd/system
 
+# User setup
+sudo useradd -M --system homebridge
+sudo groupadd homebridge_group
+sudo usermod -a -G homebridge_group homebridge
+
+# Folder
+sudo mkdir /var/lib/homebridge
+
+# Folder user priveleges
+sudo chown -R homebridge /var/lib/homebridge
+
+# Systemctl
+sudo systemctl daemon-reload
+sudo systemctl enable homebridge
+sudo systemctl start homebridge
+```
+
+To making the homebridge user run without password open the sudoers file with:
+```sudo visudo```
+
+Then add a line with the following:
+```homebridge ALL=(ALL) NOPASSWD: ALL"```
+
+### Homebridge-ui-x plugin
+* Edit the service file with  `sudo vim /etc/default/homebridge.service`
+* Add and `-I` argument to make Homebridge run in insecure mode. It should look like this:
+   ```
+   
+   ```
+echo "Og.."
+echo "Det mÃ¥ det for at config-ui skal fungera.
+echo " "
+echo "Og legg til config.json i /var/lib/homebridge/config.json."
+echo "sudo reboot"
+echo " "
+echo "InstallÃr homebridge-config-ui-x"
 
