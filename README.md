@@ -60,7 +60,7 @@ I've tried to include the necessary steps below. Please make sure you understand
    vim /etc/hostname
    vim /etc/hosts
    ```
-* Rebooot with `sudo reboot`.
+* Reboot with `sudo reboot`.
 
 ### Install Node.js
 The Raspberry Pi Zero W has ARM6L architecture. Hence the following procedure is required to install Node.Js.
