@@ -23,8 +23,8 @@ I've tried to include the necessary steps below. Please make sure you understand
 ### Headless RPi config
 * Put the micro SD card with Raspbian in your SD card reader.
 * Create two files on the root directory of the SD card
-  * One file named "ssh". It must be empty. No file extension.
-  * A second fil named "wpa_supplicant.conf". Add the following content, and replace the info with your own WiFi info.
+  * One file named `ssh. It must be empty. No file extension.
+  * A second file named `wpa_supplicant.conf`. Add the following content, and replace the info with your own WiFi info.
    ```
    country=GB
    ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
