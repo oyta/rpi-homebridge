@@ -46,9 +46,37 @@ Short step by step.
    sudo apt-get update
    sudo apt-get upgrade
    ```
+* You can do some inital config with `raspi-config`. Setting up the language packages among other.
 * Install needed packages. I use `vim` but you can use whatever is your favorite editor.
    ```
-   sudo apt-get install vim 
+   sudo apt-get install vim git 
+   sudo apt-get install libavahi-compat-libdnssd-dev bluetooth bluez libbluetooth-dev libudev-dev
+   sudo apt-get install libcap2-bin
+   ```
 * If having more than one Raspberry Pi on the network, I find it useful to change the hostnames:
    ```
-   sudo apt-get upa
+   vim /etc/hostname
+   vim /etc/hosts
+   ``
+* Rebooot with `sudo reboot`.
+
+### Install Node.js
+The Raspberry Pi Zero W has ARM6L architecture. Hence the following procedure is required to install Node.Js.
+```
+wget https://nodejs.org/dist/latest/node-v11.13.0-linux-armv6l.tar.gz
+tar -xvf node-v11.13.0-linux-arm6l.tar.gz
+cd node-v11.13.0-linux-arm6l
+sudo cp -R * /usr/local/
+```
+Now `node`and `npm`should be in the path. Test it by getting the version:
+```
+pi@rpi-zw-01:~ $ node -v
+v11.13.0
+pi@rpi-zw-01:~ $ npm -v
+6.7.0
+```
+
+### 
+
+
+
