@@ -14,7 +14,7 @@ An easy way to install everything is simply using the [Docker Homebridge by Oznu
 * [Noble](https://github.com/noble/noble#readme)
 
 ## Step by step
-I've tried to include the necessary steps below. Please make sure you understand the commands you are running.
+I've tried to include the necessary steps below. Please make sure you understand the commands you are running. Security wise, you should know what you are doing.
 
 ### Raspbian
 * Download the latest Raspbian Lite distro for RPi. Currently it is the Strech version. [raspberrypi.org](https://www.raspberrypi.org/downloads/raspbian/).
