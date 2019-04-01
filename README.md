@@ -8,13 +8,14 @@ An easy way to install everything is simply using the [Docker Homebridge by Oznu
 
 ## References
 * [Homebridge by nafarina](https://github.com/nfarina/homebridge)
-* [Docker Homebridge by Oznu]()
-* [Node install]()
-* [NPM Homebridge Plugins]()
-
+* [Docker Homebridge by Oznu](https://github.com/oznu/docker-homebridge)
+* [Node.js dists](https://nodejs.org/dist/latest/)
+* [NPM Homebridge Plugins](https://www.npmjs.com/search?q=keywords:homebridge-plugin)
+* [Noble](https://github.com/noble/noble#readme)
 
 ## Step by step
-Short step by step.
+I've tried to include the necessary steps below. Please make sure you understand the commands you are running.
+
 ### Raspbian
 * Download the latest Raspbian Lite distro for RPi. Currently it is the Strech version. [raspberrypi.org](https://www.raspberrypi.org/downloads/raspbian/).
 * Follow the installation instructions on [raspberrypi.org](https://www.raspberrypi.org/documentation/installation/installing-images/README.md). It is basically to downloading Etcher and use it to load the image on the micro SD-card.
@@ -117,7 +118,12 @@ To making the homebridge user run without password open the sudoers file with:
 Then add a line with the following:
 ```homebridge ALL=(ALL) NOPASSWD: ALL"```
 
+### config.json
+Homebridge needs a config.json file. In this setup it must be placed at `/var/lib/homebridge/config.json`.
+See the sample config.json at [nfarina's Homebridge site](https://github.com/nfarina/homebridge).
+
 ### Homebridge-ui-x plugin
+Oznu has made a UI for Homebridge where one can e.g. edit config.json and see the running status of Homebridge. You'll find more information about the install etc. at [npmjs.com](https://www.npmjs.com/package/homebridge-config-ui-x), but I have added some specifics for my setup below.
 * Edit the service file with  `sudo vim /etc/default/homebridge.service`
 * Add and `-I` argument to make Homebridge run in insecure mode. It should look like this:
    ```
@@ -129,11 +135,5 @@ Then add a line with the following:
    # You can display this via systemd's journalctl: journalctl -f -u homebridge
    # DEBUG=*
    ```
-echo "Og.."
-echo "Det mÃ¥ det for at config-ui skal fungera.
-echo " "
-echo "Og legg til config.json i /var/lib/homebridge/config.json."
-echo "sudo reboot"
-echo " "
-echo "InstallÃr homebridge-config-ui-x"
+* Install the plugin with `sudo npm install -g --unsafe-perm homebridge-config-ui-x`.
 
