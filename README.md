@@ -58,7 +58,7 @@ Short step by step.
    ```
    vim /etc/hostname
    vim /etc/hosts
-   ``
+   ```
 * Rebooot with `sudo reboot`.
 
 ### Install Node.js
@@ -121,7 +121,13 @@ Then add a line with the following:
 * Edit the service file with  `sudo vim /etc/default/homebridge.service`
 * Add and `-I` argument to make Homebridge run in insecure mode. It should look like this:
    ```
-   
+   # Defaults / Configuration options for homebridge
+   # The following settings tells homebridge where to find the config.json file and where to persist the data (i.e. pairing and others)
+   HOMEBRIDGE_OPTS=-U /var/lib/homebridge -I
+
+   # If you uncomment the following line, homebridge will log more
+   # You can display this via systemd's journalctl: journalctl -f -u homebridge
+   # DEBUG=*
    ```
 echo "Og.."
 echo "Det mÃ¥ det for at config-ui skal fungera.
